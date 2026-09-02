@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NSS Activities | Punjabi University</title><meta name="description" content="NSS Activities | Punjabi University — National Service Scheme, Punjabi University, Patiala.">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/pages.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-protected="false">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="site-top"><div class="container topbar">
+<div class="top-left"><span>☎ +91 175 304 6000</span><span>✉ nss@pbi.ac.in</span></div>
+<div class="top-right"><span>🌐 Punjabi</span><button class="lang-switch" id="langSwitch">ਪੰਜਾਬੀ</button><span>A-</span><span>A</span><span>A+</span></div>
+</div></div><header class="site-header">
+<div class="container header-main">
+<a class="brand" href="index.html">
+  <span class="brand-mark">NSS</span>
+  <span><strong>ਪੰਜਾਬੀ ਯੂਨੀਵਰਸਿਟੀ, ਪਟਿਆਲਾ</strong><small>Punjabi University, Patiala · National Service Scheme</small></span>
+</a>
+<button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+<nav class="nav" aria-label="Main navigation">
+  <a href="index.html" data-i18n="home">Home</a>
+  <a href="about.html" data-i18n="about">About NSS</a>
+  <a href="administration.html" data-i18n="administration">Administration</a>
+  <a href="units.html" data-i18n="units">NSS Units</a>
+  <a href="activities.html" data-i18n="activities">Activities</a>
+  <a href="events.html" data-i18n="events">Events</a>
+  <a href="notices.html" data-i18n="notices">Notices</a>
+  <a href="gallery.html" data-i18n="gallery">Gallery</a>
+  <a href="achievements.html" data-i18n="achievements">Achievements</a>
+  <a href="contact.html" data-i18n="contact">Contact Us</a>
+  <div class="nav-dropdown">
+    <button class="login-nav" type="button">Login <span aria-hidden="true">⌄</span></button>
+    <div class="dropdown-menu">
+      <strong style="display:block;padding:8px 12px;color:var(--primary)">Login As</strong>
+      <a href="login.html#volunteerLoginPanel">👤 &nbsp;Volunteer</a>
+      <a href="login.html#officerLoginPanel">▣ &nbsp;Programme Officer</a>
+    </div>
+  </div>
+  <a href="volunteer.html" class="join-nav">Join NSS</a>
+</nav>
+</div></header>
+<main id="main"><section class="page-header"><div class="container"><div class="breadcrumb"><a href="index.html">Home</a> / NSS Activities</div><h1>NSS Activities</h1></div></section>
+<section class="section"><div class="container"><div class="toolbar"><input id="activitySearch" placeholder="Search activities"><select id="activityCategory"><option>All Categories</option><option>Community Service</option><option>Cleanliness Drives</option><option>Blood Donation</option><option>Awareness Campaigns</option><option>Digital Literacy</option><option>Environmental Awareness</option></select><select id="activitySort"><option value="new">Newest first</option><option value="old">Oldest first</option></select></div><div id="activityGrid" class="grid grid-3"></div></div></section>
+<script>document.addEventListener("DOMContentLoaded",()=>{const g=document.querySelector("#activityGrid"),q=document.querySelector("#activitySearch"),c=document.querySelector("#activityCategory"),s=document.querySelector("#activitySort");function r(){let a=activities.filter(x=>(c.value==="All Categories"||x.category===c.value)&&JSON.stringify(x).toLowerCase().includes(q.value.toLowerCase())).sort((x,y)=>s.value==="new"?y.date.localeCompare(x.date):x.date.localeCompare(y.date));g.innerHTML=a.length?a.map(x=>`<article class="card activity-card"><img src="${x.image}" alt="${x.title}"><div class="card-body"><span class="badge">${x.category}</span><h3>${x.title}</h3><p class="meta">${x.date} · ${x.location}</p><p>${x.description}</p></div></article>`).join(""):`<div class="empty" style="grid-column:1/-1">No activities found.</div>`}q.oninput=c.onchange=s.onchange=r;r()})</script></main>
+<footer class="footer"><div class="container footer-grid">
+<div><div class="brand"><span class="brand-mark">NSS</span><span><strong style="color:#fff">National Service Scheme</strong><small>Punjabi University, Patiala</small></span></div><p>Demo portal for an institutional NSS website. Replace demo content with verified university information before production use.</p></div>
+<div><h3>NSS</h3><a href="about.html">About NSS</a><a href="activities.html">Activities</a><a href="events.html">Events</a><a href="volunteer.html">Volunteers</a><a href="gallery.html">Gallery</a></div>
+<div><h3>Quick Links</h3><a href="notices.html">Notices</a><a href="administration.html">Administration</a><a href="contact.html">Contact</a><a href="index.html#about">NSS at Punjabi University</a></div>
+<div><h3>Contact</h3><p>NSS Office<br>Punjabi University, Patiala<br>Email: replace@example.edu<br>Phone: +91-00000-00000</p><p>Facebook · Instagram · YouTube · X</p></div>
+</div><div class="container footer-bottom"><span>© <span data-year></span> Punjabi University, Patiala. All Rights Reserved.</span><span>Static frontend demo</span></div></footer>
+<script src="js/data.js"></script><script>window.notices=notices;window.events=events;window.activities=activities;window.units=units;window.achievements=achievements;</script><script src="js/main.js"></script><script src="js/search.js"></script><script src="js/forms.js"></script><script src="js/auth.js"></script><script src="js/language.js"></script>
+</body></html>

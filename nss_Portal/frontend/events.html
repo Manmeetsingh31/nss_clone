@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>NSS Events | Punjabi University</title>
+
+  <meta name="description"
+    content="NSS Events | Punjabi University — National Service Scheme, Punjabi University, Patiala.">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+
+<body data-protected="false">
+
+  <a class="skip-link" href="#main">
+    Skip to content
+  </a>
+
+
+  <!-- ============================================================
+     TOP BAR
+============================================================ -->
+
+  <div class="site-top">
+
+    <div class="container topbar">
+
+      <div class="top-left">
+
+        <span>
+          ☎ +91 175 304 6000
+        </span>
+
+        <span>
+          ✉ nss@pbi.ac.in
+        </span>
+
+      </div>
+
+
+      <div class="top-right">
+
+        <span>
+          🌐 Punjabi
+        </span>
+
+        <button class="lang-switch" id="langSwitch" type="button">
+          ਪੰਜਾਬੀ
+        </button>
+
+        <span>A-</span>
+        <span>A</span>
+        <span>A+</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ============================================================
+     HEADER
+============================================================ -->
+
+  <header class="site-header">
+
+    <div class="container header-main">
+
+
+      <a class="brand" href="index.html">
+
+        <span class="brand-mark">
+          NSS
+        </span>
+
+        <span>
+
+          <strong>
+            ਪੰਜਾਬੀ ਯੂਨੀਵਰਸਿਟੀ, ਪਟਿਆਲਾ
+          </strong>
+
+          <small>
+            Punjabi University, Patiala · National Service Scheme
+          </small>
+
+        </span>
+
+      </a>
+
+
+
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        ☰
+      </button>
+
+
+
+      <nav class="nav" aria-label="Main navigation">
+
+        <a href="index.html" data-i18n="home">
+          Home
+        </a>
+
+        <a href="about.html" data-i18n="about">
+          About NSS
+        </a>
+
+        <a href="administration.html" data-i18n="administration">
+          Administration
+        </a>
+
+        <a href="units.html" data-i18n="units">
+          NSS Units
+        </a>
+
+        <a href="activities.html" data-i18n="activities">
+          Activities
+        </a>
+
+        <a href="events.html" data-i18n="events" aria-current="page">
+          Events
+        </a>
+
+        <a href="notices.html" data-i18n="notices">
+          Notices
+        </a>
+
+        <a href="gallery.html" data-i18n="gallery">
+          Gallery
+        </a>
+
+        <a href="achievements.html" data-i18n="achievements">
+          Achievements
+        </a>
+
+        <a href="contact.html" data-i18n="contact">
+          Contact Us
+        </a>
+
+
+
+        <!-- ======================================================
+           LOGIN DROPDOWN
+      ======================================================= -->
+
+        <div class="nav-dropdown">
+
+          <button class="login-nav" type="button">
+
+            Login
+
+            <span aria-hidden="true">
+              ⌄
+            </span>
+
+          </button>
+
+
+          <div class="dropdown-menu">
+
+            <strong style="
+              display:block;
+              padding:8px 12px;
+              color:var(--primary)
+            ">
+              Login As
+            </strong>
+
+            <a href="login.html#volunteerLoginPanel">
+              👤 &nbsp;Volunteer
+            </a>
+
+            <a href="login.html#officerLoginPanel">
+              ▣ &nbsp;Programme Officer
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <a href="volunteer.html" class="join-nav">
+          Join NSS
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- ============================================================
+     MAIN
+============================================================ -->
+
+  <main id="main">
+
+
+    <!-- ==========================================================
+       PAGE HEADER
+  =========================================================== -->
+
+    <section class="page-header">
+
+      <div class="container">
+
+        <div class="breadcrumb">
+
+          <a href="index.html">
+            Home
+          </a>
+
+          /
+
+          NSS Events
+
+        </div>
+
+
+        <h1>
+          NSS Events
+        </h1>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==========================================================
+       EVENTS SECTION
+  =========================================================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+
+        <!-- ======================================================
+           SEARCH / FILTER
+      ======================================================= -->
+
+        <div class="toolbar">
+
+          <input id="eventSearch" type="search" placeholder="Search events" aria-label="Search events">
+
+
+          <select id="eventStatus" aria-label="Filter events">
+
+            <option value="All">
+              All
+            </option>
+
+            <option value="Upcoming">
+              Upcoming
+            </option>
+
+            <option value="Past">
+              Past
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <!-- ======================================================
+           UPCOMING EVENTS
+      ======================================================= -->
+
+        <h2 class="section-title">
+          Upcoming Events
+        </h2>
+
+
+        <div id="upcoming" class="grid grid-3" style="margin-bottom:55px">
+
+          <div class="empty" style="grid-column:1/-1">
+            Loading events...
+          </div>
+
+        </div>
+
+
+
+        <!-- ======================================================
+           PAST EVENTS
+      ======================================================= -->
+
+        <h2 class="section-title">
+          Past Events
+        </h2>
+
+
+        <div id="past" class="grid grid-3">
+
+          <div class="empty" style="grid-column:1/-1">
+            Loading events...
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ============================================================
+     FOOTER
+============================================================ -->
+
+  <footer class="footer">
+
+    <div class="container footer-grid">
+
+
+      <!-- ========================================================
+         FOOTER BRAND
+    ========================================================= -->
+
+      <div>
+
+        <div class="brand">
+
+          <span class="brand-mark">
+            NSS
+          </span>
+
+          <span>
+
+            <strong style="color:#fff">
+              National Service Scheme
+            </strong>
+
+            <small>
+              Punjabi University, Patiala
+            </small>
+
+          </span>
+
+        </div>
+
+
+        <p>
+          NSS Volunteer Portal.
+        </p>
+
+      </div>
+
+
+
+      <!-- ========================================================
+         NSS LINKS
+    ========================================================= -->
+
+      <div>
+
+        <h3>
+          NSS
+        </h3>
+
+        <a href="about.html">
+          About NSS
+        </a>
+
+        <a href="activities.html">
+          Activities
+        </a>
+
+        <a href="events.html">
+          Events
+        </a>
+
+        <a href="volunteer.html">
+          Volunteers
+        </a>
+
+        <a href="gallery.html">
+          Gallery
+        </a>
+
+      </div>
+
+
+
+      <!-- ========================================================
+         QUICK LINKS
+    ========================================================= -->
+
+      <div>
+
+        <h3>
+          Quick Links
+        </h3>
+
+        <a href="notices.html">
+          Notices
+        </a>
+
+        <a href="administration.html">
+          Administration
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+        <a href="index.html#about">
+          NSS at Punjabi University
+        </a>
+
+      </div>
+
+
+
+      <!-- ========================================================
+         CONTACT
+    ========================================================= -->
+
+      <div>
+
+        <h3>
+          Contact
+        </h3>
+
+        <p>
+
+          NSS Office
+          <br>
+
+          Punjabi University, Patiala
+          <br>
+
+          Email: nss@pbi.ac.in
+          <br>
+
+          Phone: +91 175 304 6000
+
+        </p>
+
+
+        <p>
+          Facebook · Instagram · YouTube · X
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ==========================================================
+       FOOTER BOTTOM
+  =========================================================== -->
+
+    <div class="container footer-bottom">
+
+      <span>
+
+        ©
+
+        <span data-year></span>
+
+        Punjabi University, Patiala.
+        All Rights Reserved.
+
+      </span>
+
+
+      <span>
+        NSS Volunteer Portal
+      </span>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+
+  <script src="js/main.js"></script>
+
+  <script src="js/search.js"></script>
+
+  <script src="js/forms.js"></script>
+
+  <!-- Authentication -->
+  <script src="js/auth.js"></script>
+
+  <!-- API client MUST load before events.js -->
+  <script src="js/api.js"></script>
+
+  <!-- Events API logic -->
+  <script src="js/events.js"></script>
+
+  <script src="js/language.js"></script>
+
+
+</body>
+
+</html>

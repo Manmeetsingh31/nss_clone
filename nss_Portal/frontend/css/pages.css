@@ -1,0 +1,5 @@
+
+.login-page{min-height:calc(100vh - 140px);display:grid;place-items:center;background:var(--background);padding:50px 0}
+.login-card{width:min(480px,100%);padding:34px}.login-card .brand-mark{margin:0 auto 15px}
+.cta{background:var(--primary);color:#fff;border-radius:16px;padding:40px}.cta h2{margin:0 0 8px}
+.contact-list{display:grid;gap:15px}.contact-row{display:flex;gap:14px;align-items:flex-start}.contact-icon{width:42px;height:42px;border-radius:9px;background:#eef3f9;color:var(--primary);display:grid;place-items:center;font-weight:900}

@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Volunteer Dashboard | Punjabi University</title>
+
+  <meta
+    name="description"
+    content="Volunteer Dashboard | Punjabi University — National Service Scheme."
+  >
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+
+<body data-protected="true">
+
+  <a class="skip-link" href="#main">
+    Skip to content
+  </a>
+
+
+  <!-- =========================================================
+       TOP BAR
+  ========================================================== -->
+
+  <div class="site-top">
+
+    <div class="container topbar">
+
+      <div class="top-left">
+
+        <span>
+          ☎ +91 175 304 6000
+        </span>
+
+        <span>
+          ✉ nss@pbi.ac.in
+        </span>
+
+      </div>
+
+
+      <div class="top-right">
+
+        <span>
+          🌐 Punjabi
+        </span>
+
+        <button
+          class="lang-switch"
+          id="langSwitch"
+          type="button"
+        >
+          ਪੰਜਾਬੀ
+        </button>
+
+        <span>A-</span>
+        <span>A</span>
+        <span>A+</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
+
+  <header class="site-header">
+
+    <div class="container header-main">
+
+
+      <!-- BRAND -->
+
+      <a
+        class="brand"
+        href="index.html"
+      >
+
+        <span class="brand-mark">
+          NSS
+        </span>
+
+
+        <span>
+
+          <strong>
+            ਪੰਜਾਬੀ ਯੂਨੀਵਰਸਿਟੀ, ਪਟਿਆਲਾ
+          </strong>
+
+          <small>
+            Punjabi University, Patiala · National Service Scheme
+          </small>
+
+        </span>
+
+      </a>
+
+
+      <!-- MOBILE NAV -->
+
+      <button
+        class="nav-toggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        type="button"
+      >
+        ☰
+      </button>
+
+
+      <!-- NAVIGATION -->
+
+      <nav
+        class="nav"
+        aria-label="Main navigation"
+      >
+
+        <a
+          href="index.html"
+          data-i18n="home"
+        >
+          Home
+        </a>
+
+        <a
+          href="about.html"
+          data-i18n="about"
+        >
+          About NSS
+        </a>
+
+        <a
+          href="administration.html"
+          data-i18n="administration"
+        >
+          Administration
+        </a>
+
+        <a
+          href="units.html"
+          data-i18n="units"
+        >
+          NSS Units
+        </a>
+
+        <a
+          href="activities.html"
+          data-i18n="activities"
+        >
+          Activities
+        </a>
+
+        <a
+          href="events.html"
+          data-i18n="events"
+        >
+          Events
+        </a>
+
+        <a
+          href="notices.html"
+          data-i18n="notices"
+        >
+          Notices
+        </a>
+
+        <a
+          href="gallery.html"
+          data-i18n="gallery"
+        >
+          Gallery
+        </a>
+
+        <a
+          href="achievements.html"
+          data-i18n="achievements"
+        >
+          Achievements
+        </a>
+
+        <a
+          href="contact.html"
+          data-i18n="contact"
+        >
+          Contact Us
+        </a>
+
+
+        <!-- LOGIN DROPDOWN -->
+
+        <div class="nav-dropdown">
+
+          <button
+            class="login-nav"
+            type="button"
+          >
+            Login
+            <span aria-hidden="true">
+              ⌄
+            </span>
+          </button>
+
+
+          <div class="dropdown-menu">
+
+            <strong
+              style="
+                display:block;
+                padding:8px 12px;
+                color:var(--primary);
+              "
+            >
+              Login As
+            </strong>
+
+
+            <a href="login.html#volunteerLoginPanel">
+              👤 &nbsp;Volunteer
+            </a>
+
+
+            <a href="login.html#officerLoginPanel">
+              ▣ &nbsp;Programme Officer
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <a
+          href="volunteer.html"
+          class="join-nav"
+        >
+          Join NSS
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+
+  <main id="main">
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+      <div class="container">
+
+        <div class="breadcrumb">
+
+          <a href="index.html">
+            Home
+          </a>
+
+          /
+
+          Volunteer Dashboard
+
+        </div>
+
+
+        <h1>
+          Volunteer Dashboard
+        </h1>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         DASHBOARD
+    ======================================================== -->
+
+    <section
+      class="section"
+      style="padding-top:35px"
+    >
+
+      <div class="container">
+
+
+        <div class="dashboard-layout">
+
+
+          <!-- =================================================
+               SIDEBAR
+          ================================================== -->
+
+          <aside class="sidebar">
+
+            <h3>
+              NSS Volunteer
+            </h3>
+
+
+            <a
+              class="active"
+              href="dashboard.html"
+            >
+              Dashboard
+            </a>
+
+
+            <a href="certificates.html">
+              Certificates
+            </a>
+
+
+            <a href="events.html">
+              Events
+            </a>
+
+
+            <a href="volunteer.html">
+              Profile / Registration
+            </a>
+
+
+            <a
+              href="#"
+              data-logout
+            >
+              Logout
+            </a>
+
+          </aside>
+
+
+          <!-- =================================================
+               DASHBOARD CONTENT
+          ================================================== -->
+
+          <div class="dashboard-main">
+
+
+            <!-- WELCOME -->
+
+            <h2>
+
+              Welcome,
+
+              <span data-user="name">
+                Volunteer
+              </span>
+
+            </h2>
+
+
+            <p class="meta">
+              Your NSS volunteer dashboard.
+            </p>
+
+
+            <!-- =================================================
+                 METRICS
+            ================================================== -->
+
+            <div class="grid grid-4">
+
+
+              <!-- NSS UNIT -->
+
+              <div class="card metric">
+
+                <h3>
+                  NSS Unit
+                </h3>
+
+
+                <strong
+                  style="font-size:1.2rem"
+                  data-user="unit"
+                >
+                  Loading...
+                </strong>
+
+              </div>
+
+
+              <!-- SERVICE HOURS -->
+
+              <div class="card metric">
+
+                <h3>
+                  Service Hours
+                </h3>
+
+
+                <strong data-user="hours">
+                  0
+                </strong>
+
+              </div>
+
+
+              <!-- ACTIVITIES REGISTERED -->
+
+              <div class="card metric">
+
+                <h3>
+                  Activities Registered
+                </h3>
+
+
+                <strong
+                  data-user="activities-registered"
+                >
+                  0
+                </strong>
+
+              </div>
+
+
+              <!-- ACTIVITIES COMPLETED -->
+
+              <div class="card metric">
+
+                <h3>
+                  Activities Completed
+                </h3>
+
+
+                <strong
+                  data-user="activities"
+                >
+                  0
+                </strong>
+
+              </div>
+
+
+              <!-- EVENTS ATTENDED -->
+
+              <div class="card metric">
+
+                <h3>
+                  Events Attended
+                </h3>
+
+
+                <strong
+                  data-user="events-attended"
+                >
+                  0
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SERVICE HOURS + PROGRAMME COMPLETION
+            ================================================== -->
+
+            <div
+              class="grid grid-2"
+              style="margin-top:22px"
+            >
+
+
+              <!-- SERVICE HOURS -->
+
+              <div class="card feature-card">
+
+                <h3>
+                  Service Hours
+                </h3>
+
+
+                <div class="chart">
+
+                  <span
+                    class="bar"
+                    style="height:45%"
+                  >
+                    <small>
+                      Jan
+                    </small>
+                  </span>
+
+
+                  <span
+                    class="bar"
+                    style="height:62%"
+                  >
+                    <small>
+                      Feb
+                    </small>
+                  </span>
+
+
+                  <span
+                    class="bar"
+                    style="height:52%"
+                  >
+                    <small>
+                      Mar
+                    </small>
+                  </span>
+
+
+                  <span
+                    class="bar"
+                    style="height:78%"
+                  >
+                    <small>
+                      Apr
+                    </small>
+                  </span>
+
+
+                  <span
+                    class="bar"
+                    style="height:70%"
+                  >
+                    <small>
+                      May
+                    </small>
+                  </span>
+
+
+                  <span
+                    class="bar"
+                    style="height:90%"
+                  >
+                    <small>
+                      Jun
+                    </small>
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- PROGRAMME COMPLETION -->
+
+              <div class="card feature-card">
+
+                <h3>
+                  Programme Completion
+                </h3>
+
+
+                <p>
+                  Annual target
+                </p>
+
+
+                <div class="progress">
+
+                  <span
+                    style="width:68%"
+                  ></span>
+
+                </div>
+
+
+                <p>
+
+                  <strong>
+                    68%
+                  </strong>
+
+                  programme completion
+
+                </p>
+
+
+                <h4>
+                  Notifications
+                </h4>
+
+
+                <p class="meta">
+                  No new notifications.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 UPCOMING ACTIVITIES
+            ================================================== -->
+
+            <div
+              class="card feature-card"
+              style="margin-top:22px"
+            >
+
+              <h3>
+                Upcoming NSS Activities
+              </h3>
+
+
+              <div id="dashEvents">
+
+                <p class="meta">
+                  Loading activities...
+                </p>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer class="footer">
+
+    <div class="container footer-grid">
+
+
+      <!-- FOOTER BRAND -->
+
+      <div>
+
+        <div class="brand">
+
+          <span class="brand-mark">
+            NSS
+          </span>
+
+
+          <span>
+
+            <strong style="color:#fff">
+              National Service Scheme
+            </strong>
+
+
+            <small>
+              Punjabi University, Patiala
+            </small>
+
+          </span>
+
+        </div>
+
+
+        <p>
+          NSS Volunteer Portal.
+        </p>
+
+      </div>
+
+
+      <!-- NSS -->
+
+      <div>
+
+        <h3>
+          NSS
+        </h3>
+
+
+        <a href="about.html">
+          About NSS
+        </a>
+
+        <a href="activities.html">
+          Activities
+        </a>
+
+        <a href="events.html">
+          Events
+        </a>
+
+        <a href="volunteer.html">
+          Volunteers
+        </a>
+
+        <a href="gallery.html">
+          Gallery
+        </a>
+
+      </div>
+
+
+      <!-- QUICK LINKS -->
+
+      <div>
+
+        <h3>
+          Quick Links
+        </h3>
+
+
+        <a href="notices.html">
+          Notices
+        </a>
+
+        <a href="administration.html">
+          Administration
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+
+        <a href="index.html#about">
+          NSS at Punjabi University
+        </a>
+
+      </div>
+
+
+      <!-- CONTACT -->
+
+      <div>
+
+        <h3>
+          Contact
+        </h3>
+
+
+        <p>
+
+          NSS Office
+          <br>
+
+          Punjabi University, Patiala
+          <br>
+
+          Email: replace@example.edu
+          <br>
+
+          Phone: +91-00000-00000
+
+        </p>
+
+
+        <p>
+          Facebook · Instagram · YouTube · X
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="container footer-bottom">
+
+      <span>
+
+        ©
+
+        <span data-year></span>
+
+        Punjabi University, Patiala.
+        All Rights Reserved.
+
+      </span>
+
+
+      <span>
+        NSS Volunteer Portal
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       
+       IMPORTANT ORDER:
+       
+       1. api.js
+       2. data.js
+       3. main.js
+       4. auth.js
+       5. dashboard.js
+  ========================================================== -->
+
+
+  <!-- API CLIENT -->
+
+  <script src="js/api.js"></script>
+
+
+  <!-- STATIC DATA -->
+
+  <script src="js/data.js"></script>
+
+
+  <script>
+
+    /*
+     * Keep compatibility with the existing
+     * frontend scripts.
+     */
+
+    if (typeof notices !== "undefined") {
+      window.notices = notices;
+    }
+
+    if (typeof events !== "undefined") {
+      window.events = events;
+    }
+
+    if (typeof activities !== "undefined") {
+      window.activities = activities;
+    }
+
+    if (typeof units !== "undefined") {
+      window.units = units;
+    }
+
+    if (typeof achievements !== "undefined") {
+      window.achievements = achievements;
+    }
+
+  </script>
+
+
+  <!-- COMMON FRONTEND -->
+
+  <script src="js/main.js"></script>
+
+  <script src="js/search.js"></script>
+
+  <script src="js/forms.js"></script>
+
+
+  <!-- AUTHENTICATION -->
+
+  <script src="js/auth.js"></script>
+
+
+  <!-- VOLUNTEER DASHBOARD -->
+
+  <script src="js/dashboard.js"></script>
+
+
+  <!-- LANGUAGE -->
+
+  <script src="js/language.js"></script>
+
+
+  <!-- =========================================================
+       DASHBOARD INITIALIZATION SAFETY CHECK
+  ========================================================== -->
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        console.log(
+          "NSS Volunteer Dashboard initialized."
+        );
+
+
+        console.log(
+          "Current user:",
+          typeof getCurrentUser === "function"
+            ? getCurrentUser()
+            : "getCurrentUser() unavailable"
+        );
+
+
+        console.log(
+          "Access token:",
+          localStorage.getItem("nssAccessToken")
+            ? "TOKEN EXISTS"
+            : "NO TOKEN"
+        );
+
+
+        console.log(
+          "nssApi:",
+          typeof nssApi
+        );
+
+
+        console.log(
+          "loadVolunteerDashboard:",
+          typeof loadVolunteerDashboard
+        );
+
+
+        /*
+         * dashboard.js already registers its own
+         * DOMContentLoaded listener.
+         *
+         * This block is ONLY a diagnostic check.
+         */
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>
