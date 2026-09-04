@@ -1,5 +1,5 @@
 /* NSS Portal API client configuration. */
-window.NSS_API_BASE = "http://127.0.0.1:8000/api";
+window.NSS_API_BASE = "https://nss-portal-api.onrender.com/api";
 
 async function nssApi(path, options = {}) {
   const headers = new Headers(options.headers || {});
