@@ -40,29 +40,13 @@ async function loadEvents() {
   try {
 
     /*
-     * IMPORTANT:
-     * Public event list uses normal fetch().
-     *
-     * We do NOT use nssApi() here because the
-     * events list is public.
+     * The event list is public, but nssApi() is used here
+     * so the request automatically targets the production
+     * Django API configured in js/api.js.
      */
 
-    const response = await fetch(
-      "http://127.0.0.1:8000/api/nss/events/"
-    );
-
-
-    if (!response.ok) {
-
-      throw new Error(
-        `Events API returned ${response.status}`
-      );
-
-    }
-
-
     const data =
-      await response.json();
+      await nssApi("/nss/events/");
 
 
     console.log(
