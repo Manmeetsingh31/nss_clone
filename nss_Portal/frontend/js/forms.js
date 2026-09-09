@@ -1,4 +1,4 @@
-function validateForm(form){
+function validateForm(form) {
   let ok = true;
   form.querySelectorAll("[required]").forEach(input => {
     const err = input.parentElement.querySelector(".error");
@@ -15,7 +15,7 @@ function validateForm(form){
   return ok;
 }
 
-function showFormSuccess(form, message){
+function showFormSuccess(form, message) {
   const box = form.parentElement.querySelector(".success-box") || document.createElement("div");
   box.className = "success-box";
   box.textContent = message;
@@ -23,14 +23,14 @@ function showFormSuccess(form, message){
   form.reset();
 }
 
-function setFieldError(form, field, message){
+function setFieldError(form, field, message) {
   const input = form.querySelector(`[name="${field}"]`);
   if (!input) return;
   const err = input.parentElement.querySelector(".error");
   if (err) err.textContent = message;
 }
 
-function formatRegistrationErrors(data){
+function formatRegistrationErrors(data) {
   if (!data) return "Registration failed. Please try again.";
   if (data.detail) return data.detail;
   return Object.entries(data).map(([field, value]) => {
@@ -39,8 +39,7 @@ function formatRegistrationErrors(data){
   }).join("\n");
 }
 
-async function loadNssOptions(){
-  async function loadNssOptions() {
+async function loadNssOptions() {
   const collegeSelect = document.querySelector("#collegeSelect");
   const unitSelect = document.querySelector("#unitSelect");
 
@@ -147,9 +146,8 @@ async function loadNssOptions(){
     }
   });
 }
-}
 
-async function submitVolunteerRegistration(form){
+async function submitVolunteerRegistration(form) {
   if (!validateForm(form)) return;
 
   const password = form.password.value;
