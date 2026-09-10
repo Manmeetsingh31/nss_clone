@@ -22,27 +22,10 @@ const events = [
   {id:3,title:"Demo Tree Plantation Activity",date:"2026-06-20",time:"9:00 AM",venue:"Demo Location — Replace",organizer:"NSS Unit — Demo",description:"Demo past event. Replace with verified details.",status:"Completed",image:"images/events/event-3.svg"}
 ];
 
-const activities = [
-  {id:1,title:"Demo Community Service",date:"2026-08-02",location:"Demo Location",category:"Community Service",description:"Demo activity content for replacement with official information.",image:"images/activities/activity-1.svg"},
-  {id:2,title:"Demo Cleanliness Drive",date:"2026-07-28",location:"Demo Location",category:"Cleanliness Drives",description:"Demo activity content for replacement.",image:"images/activities/activity-2.svg"},
-  {id:3,title:"Demo Blood Donation Camp",date:"2026-07-12",location:"Demo Location",category:"Blood Donation",description:"Demo activity content for replacement.",image:"images/activities/activity-3.svg"},
-  {id:4,title:"Demo Awareness Campaign",date:"2026-06-30",location:"Demo Location",category:"Awareness Campaigns",description:"Demo activity content for replacement.",image:"images/activities/activity-4.svg"},
-  {id:5,title:"Demo Digital Literacy Session",date:"2026-06-18",location:"Demo Location",category:"Digital Literacy",description:"Demo activity content for replacement.",image:"images/activities/activity-5.svg"},
-  {id:6,title:"Demo Environmental Awareness",date:"2026-05-22",location:"Demo Location",category:"Environmental Awareness",description:"Demo activity content for replacement.",image:"images/activities/activity-6.svg"}
-];
-
-const units = [
-  {id:1,unit:"NSS Unit 01",college:"Demo College / Department",officer:"Demo Programme Officer",volunteers:50,location:"Demo Campus",category:"Arts",description:"Demo unit record. Replace with official unit information."},
-  {id:2,unit:"NSS Unit 02",college:"Demo College / Department",officer:"Demo Programme Officer",volunteers:45,location:"Demo Campus",category:"Science",description:"Demo unit record. Replace with official unit information."},
-  {id:3,unit:"NSS Unit 03",college:"Demo College / Department",officer:"Demo Programme Officer",volunteers:60,location:"Demo Campus",category:"Engineering",description:"Demo unit record. Replace with official unit information."},
-  {id:4,unit:"NSS Unit 04",college:"Demo College / Department",officer:"Demo Programme Officer",volunteers:40,location:"Demo Campus",category:"Other",description:"Demo unit record. Replace with official unit information."}
-];
-
-const administration = [
-  {name:"Demo Officer Name",designation:"Programme Coordinator — Demo",department:"Demo Department",email:"replace@example.edu",phone:"+91-00000-00000",description:"Demo profile. Replace with verified official information."},
-  {name:"Demo Programme Officer",designation:"Programme Officer — Demo",department:"Demo Department",email:"replace@example.edu",phone:"+91-00000-00000",description:"Demo profile. Replace with verified official information."},
-  {name:"Demo NSS Staff",designation:"NSS Staff — Demo",department:"Demo Office",email:"replace@example.edu",phone:"+91-00000-00000",description:"Demo profile. Replace with verified official information."}
-];
+/* Pages that need live data populate these at runtime. */
+const activities = [];
+const units = [];
+const administration = [];
 
 const achievements = [
   {year:"2026",title:"Demo University-Level Achievement",category:"University",description:"Demo achievement. Replace with a verified official achievement.",image:"images/gallery/gallery-1.svg"},

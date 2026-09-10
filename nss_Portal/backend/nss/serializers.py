@@ -19,9 +19,33 @@ class CollegeSerializer(serializers.ModelSerializer):
 
 class NSSUnitSerializer(serializers.ModelSerializer):
 
+    college_name = serializers.CharField(
+        source="college.name",
+        read_only=True,
+    )
+    programme_officer_name = serializers.SerializerMethodField()
+
     class Meta:
         model = NSSUnit
-        fields = ["id", "name", "unit_number", "college"]
+        fields = [
+            "id",
+            "name",
+            "unit_number",
+            "college",
+            "college_name",
+            "programme_officer_name",
+        ]
+
+    def get_programme_officer_name(self, obj):
+        officer = obj.programme_officer
+
+        if not officer:
+            return ""
+
+        return " ".join(
+            part for part in [officer.first_name, officer.last_name]
+            if part
+        )
 
 
 class ActivitySerializer(serializers.ModelSerializer):

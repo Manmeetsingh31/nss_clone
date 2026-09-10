@@ -80,6 +80,9 @@ class NSSUnitListView(generics.ListAPIView):
 
         queryset = NSSUnit.objects.filter(
             is_active=True
+        ).select_related(
+            "college",
+            "programme_officer",
         )
 
         college_id = self.request.query_params.get(
