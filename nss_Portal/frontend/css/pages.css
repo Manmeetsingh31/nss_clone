@@ -3,3 +3,4 @@
 .login-card{width:min(480px,100%);padding:34px}.login-card .brand-mark{margin:0 auto 15px}
 .cta{background:var(--primary);color:#fff;border-radius:16px;padding:40px}.cta h2{margin:0 0 8px}
 .contact-list{display:grid;gap:15px}.contact-row{display:flex;gap:14px;align-items:flex-start}.contact-icon{width:42px;height:42px;border-radius:9px;background:#eef3f9;color:var(--primary);display:grid;place-items:center;font-weight:900}
+.content-card-image{display:block;width:100%;height:190px;object-fit:cover;border-radius:12px 12px 0 0;background:#eef3f9}.profile-card-image{height:170px;border-radius:12px 12px 0 0;margin-bottom:16px}

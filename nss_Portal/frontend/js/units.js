@@ -12,7 +12,7 @@
     const render = () => {
       const query = search.value.trim().toLowerCase();
       const visible = units.filter(unit => [unit.name, unit.unit_number, unit.college_name, unit.programme_officer_name].join(" ").toLowerCase().includes(query)).sort((left, right) => sort.value === "college" ? (left.college_name || "").localeCompare(right.college_name || "") : Number(left.unit_number) - Number(right.unit_number));
-      grid.innerHTML = visible.length ? visible.map(unit => `<article class="card feature-card"><span class="badge">Unit ${escapeHtml(unit.unit_number)}</span><h3>${escapeHtml(unit.name)}</h3><p><strong>${escapeHtml(unit.college_name)}</strong>${unit.programme_officer_name ? `<br>Programme Officer: ${escapeHtml(unit.programme_officer_name)}` : ""}</p></article>`).join("") : `<div class="empty" style="grid-column:1/-1">${units.length ? "No NSS units match your search." : "No NSS units are currently available."}</div>`;
+      grid.innerHTML = visible.length ? visible.map(unit => `<article class="card feature-card"><img class="content-card-image" src="${getNssImageUrl(unit.image_url)}" alt="${escapeHtml(unit.name || "NSS Unit")}" onerror="this.onerror=null;this.src=window.NSS_DEFAULT_IMAGE"><div class="card-body"><span class="badge">Unit ${escapeHtml(unit.unit_number)}</span><h3>${escapeHtml(unit.name)}</h3><p><strong>${escapeHtml(unit.college_name)}</strong>${unit.programme_officer_name ? `<br>Programme Officer: ${escapeHtml(unit.programme_officer_name)}` : ""}</p></div></article>`).join("") : `<div class="empty" style="grid-column:1/-1">${units.length ? "No NSS units match your search." : "No NSS units are currently available."}</div>`;
     };
 
     try {

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from config.validators import image_upload_validator
 
 
 class User(AbstractUser):
@@ -12,6 +13,12 @@ class User(AbstractUser):
         max_length=30,
         choices=Role.choices,
         default=Role.VOLUNTEER,
+    )
+    profile_image = models.ImageField(
+        upload_to="nss/programme-officers/",
+        blank=True,
+        null=True,
+        validators=[image_upload_validator],
     )
 
     def __str__(self):

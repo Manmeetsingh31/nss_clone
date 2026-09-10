@@ -275,35 +275,29 @@ function createEventCard(
 ) {
 
   const image =
-    event.image
-      ? event.image
-      : "images/events/event-1.svg";
+    getNssImageUrl(
+      event.image_url || event.image
+    );
 
 
   return `
     <article class="card">
 
-      ${
-        image
-          ? `
-            <img
-              src="${image}"
-              alt="${escapeHtml(
-                event.title ||
-                "NSS Event"
-              )}"
-              style="
-                width:100%;
-                height:190px;
-                object-fit:cover;
-                border-radius:12px;
-                margin-bottom:16px;
-              "
-              onerror="this.style.display='none'"
-            >
-          `
-          : ""
-      }
+      <img
+        src="${image}"
+        alt="${escapeHtml(
+          event.title ||
+          "NSS Event"
+        )}"
+        style="
+          width:100%;
+          height:190px;
+          object-fit:cover;
+          border-radius:12px;
+          margin-bottom:16px;
+        "
+        onerror="this.onerror=null;this.src=window.NSS_DEFAULT_IMAGE"
+      >
 
 
       <div class="card-body">

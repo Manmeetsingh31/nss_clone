@@ -11,7 +11,7 @@
       grid.innerHTML = officers.length ? officers.map(unit => {
         const name = unit.programme_officer_name;
         const initials = name.split(/\s+/).map(part => part[0]).slice(0, 2).join("");
-        return `<article class="card profile-card"><div class="avatar">${escapeHtml(initials)}</div><h3>${escapeHtml(name)}</h3><p><strong>Programme Officer</strong><br>Unit ${escapeHtml(unit.unit_number)}: ${escapeHtml(unit.name)}</p><p class="meta">${escapeHtml(unit.college_name)}</p></article>`;
+        return `<article class="card profile-card"><img class="content-card-image profile-card-image" src="${getNssImageUrl(unit.programme_officer_image_url)}" alt="${escapeHtml(name)}" onerror="this.onerror=null;this.src=window.NSS_DEFAULT_IMAGE"><div class="avatar">${escapeHtml(initials)}</div><h3>${escapeHtml(name)}</h3><p><strong>Programme Officer</strong><br>Unit ${escapeHtml(unit.unit_number)}: ${escapeHtml(unit.name)}</p><p class="meta">${escapeHtml(unit.college_name)}</p></article>`;
       }).join("") : '<div class="empty" style="grid-column:1/-1">No verified NSS administration information is currently available.</div>';
     } catch (_) {
       grid.innerHTML = '<div class="empty" style="grid-column:1/-1">NSS administration information could not be loaded. Please try again later.</div>';

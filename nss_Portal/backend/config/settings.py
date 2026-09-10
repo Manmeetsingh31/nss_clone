@@ -163,9 +163,29 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# Local uploads are served from MEDIA_ROOT in development. Production may set
+# DJANGO_MEDIA_STORAGE_BACKEND to a persistent Django storage backend.
+MEDIA_URL = os.environ.get("MEDIA_URL", "/media/")
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_STORAGE_BACKEND = os.environ.get(
+    "DJANGO_MEDIA_STORAGE_BACKEND",
+    "django.core.files.storage.FileSystemStorage",
+)
+
+MEDIA_STORAGE_OPTIONS = {}
+if MEDIA_STORAGE_BACKEND == "storages.backends.s3.S3Storage":
+    MEDIA_STORAGE_OPTIONS = {
+        "access_key": os.environ.get("AWS_ACCESS_KEY_ID"),
+        "secret_key": os.environ.get("AWS_SECRET_ACCESS_KEY"),
+        "bucket_name": os.environ.get("AWS_STORAGE_BUCKET_NAME"),
+        "region_name": os.environ.get("AWS_S3_REGION_NAME", "auto"),
+        "endpoint_url": os.environ.get("AWS_S3_ENDPOINT_URL"),
+    }
+
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": MEDIA_STORAGE_BACKEND,
+        "OPTIONS": MEDIA_STORAGE_OPTIONS,
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",

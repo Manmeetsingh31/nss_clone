@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from config.validators import image_upload_validator
 
 
 class College(models.Model):
@@ -32,6 +33,12 @@ class NSSUnit(models.Model):
         limit_choices_to={"role": "PROGRAMME_OFFICER"},
     )
     is_active = models.BooleanField(default=True)
+    image = models.ImageField(
+        upload_to="nss/units/",
+        blank=True,
+        null=True,
+        validators=[image_upload_validator],
+    )
 
     class Meta:
         ordering = ["college", "unit_number"]
@@ -61,6 +68,12 @@ class Activity(models.Model):
     hours = models.PositiveIntegerField(default=0)
 
     is_active = models.BooleanField(default=True)
+    image = models.ImageField(
+        upload_to="nss/activities/",
+        blank=True,
+        null=True,
+        validators=[image_upload_validator],
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -128,6 +141,13 @@ class Event(models.Model):
     image = models.CharField(
         max_length=255,
         blank=True
+    )
+    image_file = models.ImageField(
+        upload_to="nss/events/",
+        blank=True,
+        null=True,
+        validators=[image_upload_validator],
+        help_text="Uploaded image. This takes precedence over the legacy image value.",
     )
 
     class Meta:

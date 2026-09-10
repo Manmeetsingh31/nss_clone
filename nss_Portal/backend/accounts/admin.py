@@ -8,12 +8,12 @@ from .models import User
 class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         ("NSS Information", {
-            "fields": ("role",),
+            "fields": ("role", "profile_image"),
         }),
     )
 
     add_fieldsets = UserAdmin.add_fieldsets + (
         ("NSS Information", {
-            "fields": ("role",),
+            "fields": ("role", "profile_image"),
         }),
     )

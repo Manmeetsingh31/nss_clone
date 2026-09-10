@@ -37,6 +37,7 @@ class NSSUnitAdmin(admin.ModelAdmin):
         "unit_number",
         "college",
         "programme_officer",
+        "image",
         "is_active",
     )
 
@@ -62,6 +63,7 @@ class ActivityAdmin(admin.ModelAdmin):
         "location",
         "hours",
         "is_active",
+        "image",
     )
 
     search_fields = (
@@ -115,6 +117,7 @@ class EventAdmin(admin.ModelAdmin):
         "venue",
         "organizer",
         "status",
+        "image_file",
     )
 
     search_fields = (
