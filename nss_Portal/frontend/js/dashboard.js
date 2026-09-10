@@ -26,7 +26,6 @@ async function loadVolunteerDashboard() {
       `${user.first_name || ""} ${user.last_name || ""}`.trim() ||
       user.email ||
       "Volunteer";
-
   }
 
 
@@ -34,76 +33,40 @@ async function loadVolunteerDashboard() {
   // DASHBOARD ELEMENTS
   // ============================================================
 
-  const activitiesRegisteredElement =
-    document.querySelector(
-      '[data-user="activities-registered"]'
-    );
-
-  const activitiesCompletedElement =
-    document.querySelector(
-      '[data-user="activities"]'
-    );
+  const nssUnitElement =
+    document.querySelector('[data-user="unit"]');
 
   const serviceHoursElement =
-    document.querySelector(
-      '[data-user="hours"]'
-    );
+    document.querySelector('[data-user="hours"]');
+
+  const activitiesRegisteredElement =
+    document.querySelector('[data-user="activities-registered"]');
+
+  const activitiesCompletedElement =
+    document.querySelector('[data-user="activities"]');
+
+  const eventsRegisteredElement =
+    document.querySelector('[data-user="events-registered"]');
 
   const eventsAttendedElement =
-    document.querySelector(
-      '[data-user="events"]'
-    );
+    document.querySelector('[data-user="events-attended"]');
 
-  const nssUnitElement =
-    document.querySelector(
-      '[data-user="unit"]'
-    );
-
-  const activitiesContainer =
+  const eventsContainer =
     document.querySelector("#dashEvents");
-
-
-  // ============================================================
-  // DEBUG
-  // ============================================================
-
-  console.log(
-    "Volunteer dashboard starting..."
-  );
-
-  console.log(
-    "Logged-in user:",
-    user
-  );
-
-  console.log(
-    "Access token exists:",
-    !!localStorage.getItem("nssAccessToken")
-  );
-
-
-  if (!activitiesContainer) {
-
-    console.warn(
-      "#dashEvents was not found on the page."
-    );
-
-  }
 
 
   try {
 
-    // ============================================================
-    // GET VOLUNTEER DATA
-    // ============================================================
+    // ==========================================================
+    // GET REAL VOLUNTEER DATA
+    // ==========================================================
 
     console.log(
-      "Fetching /volunteers/me/ ..."
+      "Fetching volunteer dashboard data..."
     );
 
     const volunteerData =
       await nssApi("/volunteers/me/");
-
 
     console.log(
       "Volunteer API response:",
@@ -111,140 +74,106 @@ async function loadVolunteerDashboard() {
     );
 
 
-    // ============================================================
+    // ==========================================================
     // NSS UNIT
-    // ============================================================
+    // ==========================================================
 
     if (nssUnitElement) {
 
-      if (volunteerData.nss_unit) {
-
-        nssUnitElement.textContent =
-          `${volunteerData.nss_unit} (Unit ${volunteerData.unit_number})`;
-
-      } else {
-
-        nssUnitElement.textContent =
-          "Not Assigned";
-
-      }
-
+      nssUnitElement.textContent =
+        volunteerData.nss_unit
+          ? `${volunteerData.nss_unit} (Unit ${volunteerData.unit_number})`
+          : "Not Assigned";
     }
 
 
-    // ============================================================
-    // ACTIVITIES REGISTERED
-    // ============================================================
+    // ==========================================================
+    // ACTIVITY STATISTICS
+    // ==========================================================
 
     if (activitiesRegisteredElement) {
 
       activitiesRegisteredElement.textContent =
         volunteerData.activities_registered || 0;
-
     }
 
-
-    // ============================================================
-    // ACTIVITIES COMPLETED
-    // ============================================================
 
     if (activitiesCompletedElement) {
 
       activitiesCompletedElement.textContent =
         volunteerData.activities_completed || 0;
-
     }
 
-
-    // ============================================================
-    // SERVICE HOURS
-    // ============================================================
 
     if (serviceHoursElement) {
 
       serviceHoursElement.textContent =
         volunteerData.service_hours || 0;
-
     }
 
 
-    // ============================================================
-    // EVENTS ATTENDED
-    // ============================================================
+    // ==========================================================
+    // EVENT STATISTICS
+    // ==========================================================
+
+    if (eventsRegisteredElement) {
+
+      eventsRegisteredElement.textContent =
+        volunteerData.events_registered || 0;
+    }
+
 
     if (eventsAttendedElement) {
 
       eventsAttendedElement.textContent =
         volunteerData.events_attended || 0;
-
     }
 
 
-    // ============================================================
-    // REGISTERED ACTIVITY IDS
-    // ============================================================
+    // ==========================================================
+    // REGISTERED EVENT IDS
+    // ==========================================================
 
-    const registeredActivityIds =
-      (
-        volunteerData.registered_activity_ids || []
-      ).map(id => String(id));
+    const registeredEventIds =
+      (volunteerData.registered_event_ids || [])
+        .map(id => String(id));
 
 
-    // ============================================================
-    // LOAD ALL NSS ACTIVITIES
-    // ============================================================
+    // ==========================================================
+    // LOAD ALL EVENTS
+    // ==========================================================
 
-    if (!activitiesContainer) {
+    if (!eventsContainer) {
       return;
     }
 
 
     console.log(
-      "Fetching /nss/activities/ ..."
+      "Fetching /nss/events/ ..."
     );
 
-
-    const activities =
-      await nssApi("/nss/activities/");
-
+    const eventsResponse =
+      await nssApi("/nss/events/");
 
     console.log(
-      "Activities API response:",
-      activities
+      "Events API response:",
+      eventsResponse
     );
 
 
-    // ============================================================
+    // ==========================================================
     // HANDLE API PAGINATION
-    // ============================================================
+    // ==========================================================
 
-    const activityList =
-      Array.isArray(activities)
-        ? activities
-        : (activities.results || []);
-
-
-    // ============================================================
-    // NO ACTIVITIES
-    // ============================================================
-
-    if (!activityList.length) {
-
-      activitiesContainer.innerHTML =
-        `
-          <p class="meta">
-            No upcoming activities available.
-          </p>
-        `;
-
-      return;
-
-    }
+    const eventList =
+      Array.isArray(eventsResponse)
+        ? eventsResponse
+        : (eventsResponse.results || []);
 
 
-    // ============================================================
-    // FILTER UPCOMING ACTIVITIES
-    // ============================================================
+    // ==========================================================
+    // FILTER UPCOMING EVENTS
+    // ==========================================================
 
     const today =
       new Date();
@@ -257,61 +186,58 @@ async function loadVolunteerDashboard() {
     );
 
 
-    const upcomingActivities =
-      activityList.filter(
-        activity => {
+    const upcomingEvents =
+      eventList.filter(event => {
 
-          if (!activity.date) {
-            return true;
-          }
-
-          const activityDate =
-            new Date(
-              activity.date + "T00:00:00"
-            );
-
-          return activityDate >= today;
-
+        if (!event.date) {
+          return true;
         }
-      );
+
+        const eventDate =
+          new Date(
+            `${event.date}T00:00:00`
+          );
+
+        return (
+          eventDate >= today &&
+          event.status !== "Cancelled"
+        );
+      });
 
 
-    // ============================================================
-    // NO UPCOMING ACTIVITIES
-    // ============================================================
+    // ==========================================================
+    // NO UPCOMING EVENTS
+    // ==========================================================
 
-    if (!upcomingActivities.length) {
+    if (!upcomingEvents.length) {
 
-      activitiesContainer.innerHTML =
-        `
-          <p class="meta">
-            No upcoming activities available.
-          </p>
-        `;
+      eventsContainer.innerHTML = `
+        <p class="meta">
+          No upcoming NSS events available.
+        </p>
+      `;
 
       return;
-
     }
 
 
-    // ============================================================
-    // DISPLAY ACTIVITIES
-    // ============================================================
+    // ==========================================================
+    // DISPLAY UPCOMING EVENTS
+    // ==========================================================
 
-    activitiesContainer.innerHTML =
-      upcomingActivities
-        .map(activity => {
+    eventsContainer.innerHTML =
+      upcomingEvents
+        .map(event => {
 
           const isRegistered =
-            registeredActivityIds.includes(
-              String(activity.id)
+            registeredEventIds.includes(
+              String(event.id)
             );
 
 
           return `
-
             <div
-              class="notice-item activity-item"
+              class="notice-item event-item"
               style="
                 padding-left:0;
                 padding-right:0;
@@ -332,7 +258,7 @@ async function loadVolunteerDashboard() {
 
                 <strong>
                   ${escapeHtml(
-                    activity.title || "NSS Activity"
+                    event.title || "NSS Event"
                   )}
                 </strong>
 
@@ -342,18 +268,18 @@ async function loadVolunteerDashboard() {
                 <small>
 
                   ${escapeHtml(
-                    activity.date || ""
+                    event.date || ""
                   )}
 
                   ${
-                    activity.location
-                      ? ` · ${escapeHtml(activity.location)}`
+                    event.time
+                      ? ` · ${escapeHtml(event.time)}`
                       : ""
                   }
 
                   ${
-                    activity.hours !== undefined
-                      ? ` · ${activity.hours} hours`
+                    event.venue
+                      ? ` · ${escapeHtml(event.venue)}`
                       : ""
                   }
 
@@ -361,12 +287,26 @@ async function loadVolunteerDashboard() {
 
 
                 ${
-                  activity.description
+                  event.organizer
                     ? `
                       <br>
                       <small>
                         ${escapeHtml(
-                          activity.description
+                          event.organizer
+                        )}
+                      </small>
+                    `
+                    : ""
+                }
+
+
+                ${
+                  event.description
+                    ? `
+                      <br>
+                      <small>
+                        ${escapeHtml(
+                          event.description
                         )}
                       </small>
                     `
@@ -378,57 +318,29 @@ async function loadVolunteerDashboard() {
 
               ${
                 isRegistered
-
                   ? `
                     <button
-                      class="btn activity-register-btn"
+                      class="btn"
                       disabled
                     >
-                      Already Registered ✓
+                      Registered ✓
                     </button>
                   `
-
                   : `
-                    <button
-                      class="btn btn-success activity-register-btn"
-                      data-activity-id="${activity.id}"
+                    <a
+                      class="btn btn-success"
+                      href="events.html"
                     >
-                      Register
-                    </button>
+                      View Event
+                    </a>
                   `
               }
 
             </div>
-
           `;
 
         })
         .join("");
-
-
-    // ============================================================
-    // REGISTER BUTTON HANDLERS
-    // ============================================================
-
-    document
-      .querySelectorAll(
-        ".activity-register-btn:not([disabled])"
-      )
-      .forEach(button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            registerForActivity(
-              button
-            );
-
-          }
-        );
-
-      });
-
   }
 
 
@@ -450,117 +362,16 @@ async function loadVolunteerDashboard() {
     );
 
 
-    if (activitiesContainer) {
+    if (eventsContainer) {
 
-      activitiesContainer.innerHTML =
-        `
-          <p class="meta">
-            Unable to load activities from the server.
-          </p>
-        `;
-
+      eventsContainer.innerHTML = `
+        <p class="meta">
+          Unable to load events from the server.
+        </p>
+      `;
     }
-
   }
-
 }
-
-
-
-// ============================================================
-// REGISTER FOR ACTIVITY
-// ============================================================
-
-async function registerForActivity(
-  button
-) {
-
-  const activityId =
-    button.dataset.activityId;
-
-
-  if (!activityId) {
-    return;
-  }
-
-
-  button.disabled = true;
-
-  button.textContent =
-    "Registering...";
-
-
-  try {
-
-    const result =
-      await nssApi(
-        `/nss/activities/${activityId}/register/`,
-        {
-          method: "POST"
-        }
-      );
-
-
-    console.log(
-      "Activity registration successful:",
-      result
-    );
-
-
-    button.textContent =
-      "Already Registered ✓";
-
-
-    await loadVolunteerDashboard();
-
-  }
-
-
-  catch (error) {
-
-    console.error(
-      "Activity registration failed:",
-      error
-    );
-
-
-    const message =
-      error?.data?.detail ||
-      "Unable to register for this activity.";
-
-
-    if (
-      message
-        .toLowerCase()
-        .includes("already")
-      ||
-      message
-        .toLowerCase()
-        .includes("registered")
-    ) {
-
-      button.textContent =
-        "Already Registered ✓";
-
-      button.disabled = true;
-
-      return;
-
-    }
-
-
-    alert(message);
-
-
-    button.disabled = false;
-
-    button.textContent =
-      "Register";
-
-  }
-
-}
-
 
 
 // ============================================================
@@ -583,9 +394,7 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
-
 }
-
 
 
 // ============================================================
